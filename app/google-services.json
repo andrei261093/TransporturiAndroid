@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "598001006332",
+    "firebase_url": "https://transporturi-romania-spania.firebaseio.com",
+    "project_id": "transporturi-romania-spania",
+    "storage_bucket": "transporturi-romania-spania.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598001006332:android:2eeace8153d9867a",
+        "android_client_info": {
+          "package_name": "com.iorga.andre.transporturiromania_spania"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598001006332-usfkhhkcngng6qpl59bbe5d16q7oeu40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8UONjjjTvHAlS2J2i0vg7DI-re8irf2w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

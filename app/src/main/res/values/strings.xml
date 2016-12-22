@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Transporturi Romania-Spania</string>
+    <string name="FCM_PREF">com.iorga.andre.transporturiromania_spania.fcm_pref</string>
+    <string name="FCM_TOKEN">com.iorga.andre.transporturiromania_spania.fcm_token</string>
+</resources>
