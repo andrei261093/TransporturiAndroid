@@ -9,27 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainActivity extends AppCompatActivity {
-    Button button;
-    String app_server_url = "http://192.168.3.108/ttttransporturiTest/fcm_insert.php";
-    String jsonString;
+    Button button1, button2;
+
 
     public void getJson(View view) {
-
             Intent intent = new Intent(this, ReservationsList.class);
-            intent.putExtra("jsonString", jsonString);
             startActivity(intent);
-
-
     }
 
     @Override
@@ -38,41 +24,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.button1);
+        button1 = (Button) findViewById(R.id.button1);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.FCM_PREF), Context.MODE_PRIVATE);
                 final String token = sharedPreferences.getString(getString(R.string.FCM_TOKEN), "");
                 TextView myAwesomeTextView = (TextView) findViewById(R.id.token);
                 myAwesomeTextView.setText(token);
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, app_server_url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
 
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-
-                            }
-                        })
-
-                {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("fcm_token", token);
-
-                        return params;
-                    }
-                };
-                MySingleton.getmInstance(MainActivity.this).addToRequestque(stringRequest);
             }
         });
+        button2 = (Button) findViewById(R.id.button2);
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getJson(view);
+            }
+        });
+
     }
 }

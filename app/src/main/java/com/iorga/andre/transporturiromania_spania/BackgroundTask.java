@@ -23,7 +23,7 @@ public class BackgroundTask extends AsyncTask<Void, Void, String>{
     ReservationsList reservationsList;
 
     public BackgroundTask(ReservationsList reservationsList, TextView textView) {
-        this.json_string = reservationsList.getJsonString();
+
         this.textView = textView;
         this.reservationsList = reservationsList;
 

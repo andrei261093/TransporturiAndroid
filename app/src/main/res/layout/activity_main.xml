@@ -46,6 +46,5 @@
         android:layout_x="114dp"
         android:layout_y="192dp"
 
-        android:onClick="getJson"
         android:text="Arata Rezervari" />
 </AbsoluteLayout>

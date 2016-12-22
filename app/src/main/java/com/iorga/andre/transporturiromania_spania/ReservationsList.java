@@ -13,16 +13,14 @@ import org.json.JSONObject;
 
 public class ReservationsList extends AppCompatActivity {
 
-    String jsonString;
+
     JSONArray jsonArray;
     JSONObject jsonObject;
     ReservationAdapter reservationAdapter;
     ListView listView;
 
 
-    public String getJsonString() {
-        return jsonString;
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
