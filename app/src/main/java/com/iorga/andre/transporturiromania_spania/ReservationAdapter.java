@@ -65,7 +65,6 @@ public class ReservationAdapter extends ArrayAdapter {
             row = layoutInflater.inflate(R.layout.row_layout, parent, false);
             reservationHolder = new ReservationHolder();
 
-
             reservationHolder.tx_name = (TextView) row.findViewById(R.id.tx_name);
             reservationHolder.tx_location = (TextView) row.findViewById(R.id.tx_location);
             reservationHolder.tx_phone = (TextView) row.findViewById(R.id.tx_phone);
@@ -110,10 +109,8 @@ public class ReservationAdapter extends ArrayAdapter {
                 }
 
                 String param = "id=" + reservation.getId() + "&hasBeenCalled=" + isCalled;
-                BackgroundTask2 backgroundTask2 = new BackgroundTask2(param, reservation.getName());
-                backgroundTask2.execute();
-
-
+                MarkAsCalledAsync markAsCalledAsync = new MarkAsCalledAsync(param, reservation.getName());
+                markAsCalledAsync.execute();
             }
         });
 
@@ -129,11 +126,11 @@ public class ReservationAdapter extends ArrayAdapter {
 
 
     //Send POST
-    public class BackgroundTask2 extends AsyncTask<Void, Void, String> {
+    public class MarkAsCalledAsync extends AsyncTask<Void, Void, String> {
         String param;
         String userName;
 
-        public BackgroundTask2(String param, String userName) {
+        public MarkAsCalledAsync(String param, String userName) {
             this.param = param;
             this.userName = userName;
 
@@ -198,4 +195,5 @@ public class ReservationAdapter extends ArrayAdapter {
         System.out.println(response.toString());
 
     }
+
 }

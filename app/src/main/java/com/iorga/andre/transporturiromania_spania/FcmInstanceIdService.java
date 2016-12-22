@@ -20,7 +20,7 @@ import java.util.Map;
  */
 
 public class FcmInstanceIdService extends FirebaseInstanceIdService{
-    String app_server_url = "http://192.168.3.108/ttttransporturiTest/fcm_insert.php";
+    String app_server_url = "http://transporturirosiori.go.ro:8000/token";
 
     @Override
     public void onTokenRefresh() {
@@ -29,11 +29,14 @@ public class FcmInstanceIdService extends FirebaseInstanceIdService{
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(getString(R.string.FCM_TOKEN), recent_token);
         editor.commit();
-        sendTokenToServerDatabase(recent_token);
+        final String username = sharedPreferences.getString(getString(R.string.USERNAME), "");
+        sendTokenToServerDatabase(recent_token, username);
     }
 
-    private void sendTokenToServerDatabase(String recent_token){
+    private void sendTokenToServerDatabase(String recent_token, String username){
+
         final String token = recent_token;
+        final String user_name = username;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, app_server_url,
                 new Response.Listener<String>() {
                     @Override
@@ -53,6 +56,7 @@ public class FcmInstanceIdService extends FirebaseInstanceIdService{
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("fcm_token", token);
+                params.put("fcm_token", user_name);
 
                 return params;
             }

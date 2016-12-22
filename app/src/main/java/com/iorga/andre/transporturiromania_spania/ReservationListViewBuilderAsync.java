@@ -1,7 +1,6 @@
 package com.iorga.andre.transporturiromania_spania;
 
 import android.os.AsyncTask;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,23 +14,19 @@ import java.net.URL;
  * Created by Andrei on 07.12.2016.
  */
 
-public class BackgroundTask extends AsyncTask<Void, Void, String>{
+public class ReservationListViewBuilderAsync extends AsyncTask<Void, Void, String> {
 
     String json_url;
     String json_string;
-    TextView textView;
     ReservationsList reservationsList;
 
-    public BackgroundTask(ReservationsList reservationsList, TextView textView) {
-
-        this.textView = textView;
+    public ReservationListViewBuilderAsync(ReservationsList reservationsList) {
         this.reservationsList = reservationsList;
 
     }
 
     @Override
     protected void onPreExecute() {
-
         json_url = "http://transporturirosiori.go.ro:8000/reservations/andrei";
     }
 
@@ -46,11 +41,10 @@ public class BackgroundTask extends AsyncTask<Void, Void, String>{
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
 
-
             StringBuilder stringBuilder = new StringBuilder();
 
-            while((json_string=bufferedReader.readLine())!=null){
-                stringBuilder.append(json_string+"\n");
+            while ((json_string = bufferedReader.readLine()) != null) {
+                stringBuilder.append(json_string + "\n");
             }
 
             bufferedReader.close();
@@ -80,9 +74,10 @@ public class BackgroundTask extends AsyncTask<Void, Void, String>{
         setData(result);
 
         reservationsList.showList(result);
+
     }
 
-    private void setData(String data){
+    private void setData(String data) {
         json_string = data;
     }
 }
